@@ -24,7 +24,6 @@ public class Account {
     }
 
     public void withdraw(double withdrawAmount){
-        System.out.println("Enter amount to withdraw: ");
 
         if(balance < withdrawAmount || withdrawAmount < 0){
             System.out.println("You cannot proceed with current balance");
@@ -47,7 +46,7 @@ public class Account {
     }
 
     public void deposit(double depositAmount){
-        System.out.println("Enter amount to deposit: ");
+
 
         if(depositAmount < 0)
             return;
