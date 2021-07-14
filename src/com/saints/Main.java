@@ -1,25 +1,41 @@
 package com.saints;
 
+import com.saints.interfaceStates.InterfaceState;
+import com.saints.interfaceStates.LoggedInState;
+import com.saints.interfaceStates.LoginState;
+
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Bank bank = new Bank();
-        boolean shouldcontiune = true;
+    static Scanner scanner = new Scanner(System.in);
+    static Bank bank = new Bank();
+    InterfaceState interfaceState = new LoginState(bank);
 
+    private void changeState(InterfaceState interfaceState){
+        this.interfaceState = interfaceState;
+    }
+
+    public void main(String[] args) {
+        boolean shouldcontiune = true;
         int userChoice = 0;
 
-        while (shouldcontiune){
-            if(bank.getCurrentAccount() == null){
 
-                loginPage();
+        while (shouldcontiune){
+            if(bank.getCurrentAccount() == null)
+                changeState(new LoginState(bank));
+            else
+                changeState(new LoggedInState(bank));
+
+            interfaceState.displayOptions();
+            interfaceState.userInteraction();
+
+            if(bank.getCurrentAccount() == null){
+                changeState(new LoginState(bank));
                 userChoice = scanner.nextInt();
 
-                switch (userChoice){
-                    case 1 -> bank.signIn();
-                    case 4 -> shouldcontiune = false;}
+
+
             }
             else{
                 Account account = bank.getCurrentAccount();
@@ -41,16 +57,5 @@ public class Main {
         }
 
     }
-    private static void loginPage (){
-        System.out.println("1. Sign In");
-        System.out.println("2. Sign Up");
-        System.out.println("3. Exit");
-    }
-    private static void accountPage (){
-        System.out.println("1. Deposit");
-        System.out.println("2. Withdraw");
-        System.out.println("3. Transfer");
-        System.out.println("4. Balance");
-        System.out.println("5. Logout");
-    }
+
 }
