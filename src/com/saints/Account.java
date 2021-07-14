@@ -38,9 +38,8 @@ public class Account {
     }
 
     public void charge(double chargeAmount){
-        if(chargeAmount < 0){
+        if(chargeAmount < 0 || chargeAmount > balance){
             System.out.println("Cannot proceed with current balance");
-            displayBalance();
             return;
         }
         System.out.println(accountNumber + " Received: " + chargeAmount);
