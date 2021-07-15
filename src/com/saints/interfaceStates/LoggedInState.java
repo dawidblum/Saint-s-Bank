@@ -5,9 +5,11 @@ import com.saints.Bank;
 
 public class LoggedInState extends InterfaceState{
     private Account account;
+    private Bank bank;
 
-    public LoggedInState(Bank bank) {
-        super(bank);
+    public LoggedInState(BankSystemManagement bankSystemManagement) {
+        super(bankSystemManagement);
+        bank = bankSystemManagement.getBank();
         account = bank.getCurrentAccount();
     }
 

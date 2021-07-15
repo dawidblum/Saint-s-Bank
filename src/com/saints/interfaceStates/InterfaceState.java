@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public abstract class InterfaceState {
     protected Scanner scanner = new Scanner(System.in);
-    protected Bank bank;
+    protected BankSystemManagement bankSystemManagement;
     protected int userChoice;
 
-    public InterfaceState(Bank bank) {
-        this.bank = bank;
+    public InterfaceState(BankSystemManagement bankSystemManagement) {
+        this.bankSystemManagement = bankSystemManagement;
     }
 
     public abstract void displayOptions();

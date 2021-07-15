@@ -42,10 +42,12 @@ public class Bank {
     public void transfer(int receiverNumber) {
         Account receiver = searchByAccountNumber(receiverNumber);
 
-        if(receiver == null)
+        if(receiver == null){
+            System.out.println("Incorrect account number");
             return;
+        }
         System.out.println("Enter amount to transfer");
-        receiver.charge(scanner.nextDouble());
+        receiver.charge(scanner.nextDouble(), getCurrentAccount());
 
     }
 

@@ -3,10 +3,13 @@ package com.saints.interfaceStates;
 import com.saints.Bank;
 
 public class LoginState extends InterfaceState{
-
-    public LoginState(Bank bank) {
-        super(bank);
+    Bank bank;
+    public LoginState(BankSystemManagement bankSystemManagement) {
+        super(bankSystemManagement);
+        bank = bankSystemManagement.getBank();
     }
+
+
 
     @Override
     public void displayOptions() {

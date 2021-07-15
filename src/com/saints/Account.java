@@ -36,13 +36,15 @@ public class Account {
         displayBalance();
     }
 
-    public void charge(double chargeAmount){
-        if(chargeAmount < 0 || chargeAmount > balance){
+    public void charge(double chargeAmount, Account sender){
+        if(chargeAmount < 0 || chargeAmount > sender.balance){
             System.out.println("Cannot proceed with current balance");
             return;
         }
         System.out.println(accountNumber + " Received: " + chargeAmount);
         balance += chargeAmount;
+        sender.balance -= chargeAmount;
+        sender.displayBalance();
     }
 
     public void deposit(double depositAmount){
