@@ -1,15 +1,15 @@
-package com.saints.interfaceStates;
+package com.saints.userInterfaceStates;
 
-import com.saints.Bank;
+import com.saints.BankSystemManagement;
 
 import java.util.Scanner;
 
-public abstract class InterfaceState {
+public abstract class UserInterfaceState {
     protected Scanner scanner = new Scanner(System.in);
     protected BankSystemManagement bankSystemManagement;
     protected int userChoice;
 
-    public InterfaceState(BankSystemManagement bankSystemManagement) {
+    public UserInterfaceState(BankSystemManagement bankSystemManagement) {
         this.bankSystemManagement = bankSystemManagement;
     }
 

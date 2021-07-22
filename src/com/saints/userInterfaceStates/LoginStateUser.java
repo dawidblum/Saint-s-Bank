@@ -1,10 +1,11 @@
-package com.saints.interfaceStates;
+package com.saints.userInterfaceStates;
 
 import com.saints.Bank;
+import com.saints.BankSystemManagement;
 
-public class LoginState extends InterfaceState{
+public class LoginStateUser extends UserInterfaceState {
     Bank bank;
-    public LoginState(BankSystemManagement bankSystemManagement) {
+    public LoginStateUser(BankSystemManagement bankSystemManagement) {
         super(bankSystemManagement);
         bank = bankSystemManagement.getBank();
     }

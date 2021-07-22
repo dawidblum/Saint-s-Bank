@@ -48,7 +48,6 @@ public class Bank {
         }
         System.out.println("Enter amount to transfer");
         receiver.charge(scanner.nextDouble(), getCurrentAccount());
-
     }
 
     private void checkPin(Account account, int pin){

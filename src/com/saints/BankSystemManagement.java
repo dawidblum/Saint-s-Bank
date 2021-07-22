@@ -1,27 +1,30 @@
-package com.saints.interfaceStates;
+package com.saints;
 
 import com.saints.Bank;
+import com.saints.userInterfaceStates.LoggedInStateUser;
+import com.saints.userInterfaceStates.LoginStateUser;
+import com.saints.userInterfaceStates.UserInterfaceState;
 
 import java.util.Scanner;
 
 public class BankSystemManagement {
     private final Scanner scanner = new Scanner(System.in);
     private final Bank bank = new Bank();
-    private InterfaceState interfaceState = new LoginState(this);
+    private UserInterfaceState interfaceState = new LoginStateUser(this);
 
     public void operatingSystem(){
         while (true){
             if(bank.getCurrentAccount() == null)
-                changeState(new LoginState(this));
+                changeState(new LoginStateUser(this));
             else
-                changeState(new LoggedInState(this));
+                changeState(new LoggedInStateUser(this));
 
             interfaceState.displayOptions();
             interfaceState.userInteraction();
         }
     }
 
-    private void changeState(InterfaceState interfaceState){
+    private void changeState(UserInterfaceState interfaceState){
         this.interfaceState = interfaceState;
     }
     public Bank getBank() {
